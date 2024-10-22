@@ -30,14 +30,30 @@ class _SplashScreenState extends State<SplashScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/bg.png'),
-            fit: BoxFit.cover, // Adjust fit as needed
+            fit: BoxFit.cover,
           ),
         ),
         child: const Center(
             child: SizedBox(
                 width: 100,
                 height: 100,
-                child: Image(image: AssetImage("assets/images/logo.png")))),
+                child: Column(
+                  children: [
+                    SizedBox(
+                        height: 70,
+                        width: 70,
+                        child:
+                            Image(image: AssetImage("assets/images/logo.png"))),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: 20,
+                      width: 20,
+                      child: CircularProgressIndicator(),
+                    )
+                  ],
+                ))),
       ),
     );
   }
