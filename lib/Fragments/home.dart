@@ -95,7 +95,7 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       width: 200,
                       child: Text(
-                        "Let`s work together to end malnutrition",
+                        "Let`s work together to end climate crises",
                         style:
                             GoogleFonts.montserrat(fontWeight: FontWeight.w400),
                         maxLines: 2,

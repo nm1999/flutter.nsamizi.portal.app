@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     size: 25,
                     color: index == 2 ? Colors.green : null,
                   ),
-                  Text("Consult",
+                  Text("Notifications",
                       style: GoogleFonts.montserrat(
                           fontSize: 12, color: index == 2 ? Colors.green : null)),
                 ],
