@@ -15,12 +15,19 @@ class FormButton extends StatelessWidget {
     if (isOutlined) {
       return OutlinedButton(
         onPressed: onBtnPressed,
-        child: Text(btnLabel, style: const TextStyle(color: Colors.red,fontSize: 16)),
+        style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(0.0)), // Add rounded corners
+        ),
+        child: Text(
+          btnLabel,
+          style: const TextStyle(color: Colors.green, fontSize: 16),
+        ),
       );
     } else {
       return MaterialButton(
         onPressed: onBtnPressed,
-        color: Colors.red,
+        color: Colors.green,
         elevation: 3,
         child: Text(btnLabel,
             style: const TextStyle(color: Colors.white, fontSize: 16)),

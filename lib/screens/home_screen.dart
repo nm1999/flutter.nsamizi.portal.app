@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nsamiziportal/Fragments/home.dart';
+import 'package:nsamiziportal/Fragments/profile.dart';
+import 'package:nsamiziportal/Fragments/results.dart';
+import 'package:nsamiziportal/Fragments/vote.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -13,7 +17,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int index = 0;
   final List<Widget> _pages = const [
-      
+      Home(),
+      Results(),
+      Vote(),
+      Profile()
   ];
 
   void _iconTapped(pos) {
@@ -25,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(toolbarHeight:10,backgroundColor: Colors.green,),
       backgroundColor: Colors.white,
       body: _pages[index],
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -32,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () {
           
         },
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.green,
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(100))),
         child: const Icon(
@@ -58,11 +66,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   Icon(
                     Icons.home,
                     size: 25,
-                    color: index == 0 ? Colors.red : null,
+                    color: index == 0 ? Colors.green : null,
                   ),
                   Text("Home",
                       style: GoogleFonts.montserrat(
-                          fontSize: 12, color: index == 0 ? Colors.red : null)),
+                          fontSize: 12, color: index == 0 ? Colors.green : null)),
                 ],
               ),
             ),
@@ -76,11 +84,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   Icon(
                     Icons.search,
                     size: 25,
-                    color: index == 1 ? Colors.red : null,
+                    color: index == 1 ? Colors.green : null,
                   ),
-                  Text("Search",
+                  Text("Results",
                       style: GoogleFonts.montserrat(
-                          fontSize: 12, color: index == 1 ? Colors.red : null)),
+                          fontSize: 12, color: index == 1 ? Colors.green : null)),
                 ],
               ),
             ),
@@ -94,11 +102,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   Icon(
                     Icons.message,
                     size: 25,
-                    color: index == 2 ? Colors.red : null,
+                    color: index == 2 ? Colors.green : null,
                   ),
                   Text("Consult",
                       style: GoogleFonts.montserrat(
-                          fontSize: 12, color: index == 2 ? Colors.red : null)),
+                          fontSize: 12, color: index == 2 ? Colors.green : null)),
                 ],
               ),
             ),
@@ -110,11 +118,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 10,
                   ),
                   Icon(Icons.settings,
-                      size: 25, color: index == 3 ? Colors.red : null),
+                      size: 25, color: index == 3 ? Colors.green : null),
                   Text(
-                    "Settings",
+                    "Profile",
                     style: GoogleFonts.montserrat(
-                        fontSize: 12, color: index == 3 ? Colors.red : null),
+                        fontSize: 12, color: index == 3 ? Colors.green : null),
                   ),
                 ],
               ),
