@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
+                    padding: const EdgeInsets.only(left: 7.0),
                     child: Row(
                       children: [
                         Text(
@@ -95,7 +95,7 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       width: 200,
                       child: Text(
-                        "Let`s work together to end climate crises",
+                        "Nsamizi Training Institute of social development portal",
                         style:
                             GoogleFonts.montserrat(fontWeight: FontWeight.w400),
                         maxLines: 2,
@@ -265,7 +265,7 @@ class _HomeState extends State<Home> {
                               color: Colors.green,
                             ),
                             Text(
-                              "Learn",
+                              "Accountability",
                               style: GoogleFonts.montserrat(
                                   fontSize: 14, fontWeight: FontWeight.w600),
                             ),
