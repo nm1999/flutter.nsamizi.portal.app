@@ -99,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 10,
                   ),
                   Icon(
-                    Icons.message,
+                    Icons.notifications,
                     size: 25,
                     color: index == 2 ? Colors.green : null,
                   ),

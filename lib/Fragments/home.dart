@@ -144,7 +144,7 @@ class _HomeState extends State<Home> {
                               height: 20,
                             ),
                             const Icon(
-                              Icons.create_new_folder,
+                              Icons.person_add,
                               size: 40,
                               color: Colors.green,
                             ),
@@ -262,7 +262,7 @@ class _HomeState extends State<Home> {
                               height: 20,
                             ),
                             const Icon(
-                              Icons.report_outlined,
+                              Icons.report_gmailerrorred_rounded,
                               size: 40,
                               color: Colors.green,
                             ),
