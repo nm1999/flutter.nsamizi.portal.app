@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../screens/menu/add_student.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -103,7 +106,6 @@ class _HomeState extends State<Home> {
                     )
                   ],
                 ),
-                
               ],
             ),
           ),
@@ -126,7 +128,7 @@ class _HomeState extends State<Home> {
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
                   onTap: () {
-                    
+                    Get.to(const AddStudent());
                   },
                   child: Card(
                     elevation: 3,
@@ -145,7 +147,7 @@ class _HomeState extends State<Home> {
                               color: Colors.green,
                             ),
                             Text(
-                              "New Record",
+                              "New Student",
                               style: GoogleFonts.montserrat(
                                   fontSize: 14, fontWeight: FontWeight.w600),
                             ),
@@ -163,9 +165,7 @@ class _HomeState extends State<Home> {
                   child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
-                  onTap: () {
-                    
-                  },
+                  onTap: () {},
                   child: Card(
                     elevation: 3,
                     color: Colors.white,
@@ -207,9 +207,7 @@ class _HomeState extends State<Home> {
                   child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
-                  onTap: () {
-                   
-                  },
+                  onTap: () {},
                   child: Card(
                     elevation: 3,
                     color: Colors.white,
@@ -245,9 +243,7 @@ class _HomeState extends State<Home> {
                   child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
-                  onTap: () {
-                    
-                  },
+                  onTap: () {},
                   child: Card(
                     elevation: 3,
                     color: Colors.white,

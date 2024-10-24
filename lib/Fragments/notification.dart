@@ -13,7 +13,7 @@ class _NotificationFragmentState extends State<NotificationFragment> {
     return const Scaffold(
       backgroundColor: Colors.amber,
       body: Center(
-        child: Text("Notificiation",style: TextStyle(color: Colors.black),),
+        child: Text("Notification",style: TextStyle(color: Colors.black),),
       ),
     );
   }
