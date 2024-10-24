@@ -25,8 +25,8 @@ class _ExpenditurescreenState extends State<Expenditurescreen> {
     "Student 7",
   ];
 
-  _submitExpense(){
-
+  _submitExpense() {
+    
   }
 
   @override
@@ -85,8 +85,11 @@ class _ExpenditurescreenState extends State<Expenditurescreen> {
               height: 10,
             ),
             SizedBox(
-              height:50,
-              child: FormButton(btnLabel: "submit", onBtnPressed: _submitExpense, isOutlined: false))
+                height: 50,
+                child: FormButton(
+                    btnLabel: "submit",
+                    onBtnPressed: _submitExpense,
+                    isOutlined: false))
           ],
         ),
       ),

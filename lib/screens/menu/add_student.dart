@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nsamiziportal/common/FormButton.dart';
 import 'package:nsamiziportal/common/FormEditText.dart';
+import 'package:nsamiziportal/localDB/apiServices.dart';
 
 class AddStudent extends StatefulWidget {
   const AddStudent({super.key});
@@ -34,7 +35,9 @@ class _AddStudentState extends State<AddStudent> {
     "Year 2 Sem 2",
   ];
 
-  _registerStudent() {}
+  _registerStudent() {
+    
+  }
 
   @override
   Widget build(BuildContext context) {
