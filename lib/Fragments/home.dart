@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../screens/menu/accountability.dart';
 import '../screens/menu/add_student.dart';
+import '../screens/menu/expenditure_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -165,7 +167,9 @@ class _HomeState extends State<Home> {
                   child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(const Expenditurescreen());
+                  },
                   child: Card(
                     elevation: 3,
                     color: Colors.white,
@@ -183,7 +187,7 @@ class _HomeState extends State<Home> {
                               color: Colors.green,
                             ),
                             Text(
-                              "Update Record",
+                              "Expenditure",
                               style: GoogleFonts.montserrat(
                                   fontSize: 14, fontWeight: FontWeight.w600),
                             ),
@@ -243,7 +247,9 @@ class _HomeState extends State<Home> {
                   child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(const AccountabilityScreen());
+                  },
                   child: Card(
                     elevation: 3,
                     color: Colors.white,
