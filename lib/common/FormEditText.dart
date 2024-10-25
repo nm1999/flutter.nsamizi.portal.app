@@ -20,7 +20,9 @@ class FormEditText extends StatelessWidget {
       obscureText: isHidden,
       keyboardType: textInputType,
       decoration: InputDecoration(
-        border: const OutlineInputBorder(),
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(0))
+        ),
         labelText: inputLabel,
       ),
     );

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nsamiziportal/Fragments/home.dart';
-import 'package:nsamiziportal/Fragments/profile.dart';
-import 'package:nsamiziportal/Fragments/results.dart';
-import 'package:nsamiziportal/Fragments/vote.dart';
+import '../Fragments/home.dart';
+import '../Fragments/profile.dart';
+import '../Fragments/results.dart';
+import '../Fragments/notification.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _pages = const [
       Home(),
       Results(),
-      Vote(),
+      NotificationFragment(),
       Profile()
   ];
 
@@ -99,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 10,
                   ),
                   Icon(
-                    Icons.message,
+                    Icons.notifications,
                     size: 25,
                     color: index == 2 ? Colors.green : null,
                   ),

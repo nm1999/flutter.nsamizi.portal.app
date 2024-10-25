@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../screens/menu/accountability.dart';
+import '../screens/menu/add_student.dart';
+import '../screens/menu/expenditure_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -25,7 +30,7 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
+                    padding: const EdgeInsets.only(left: 7.0),
                     child: Row(
                       children: [
                         Text(
@@ -95,7 +100,7 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       width: 200,
                       child: Text(
-                        "Let`s work together to end climate crises",
+                        "Nsamizi Training Institute of social development portal",
                         style:
                             GoogleFonts.montserrat(fontWeight: FontWeight.w400),
                         maxLines: 2,
@@ -103,7 +108,6 @@ class _HomeState extends State<Home> {
                     )
                   ],
                 ),
-                
               ],
             ),
           ),
@@ -126,7 +130,7 @@ class _HomeState extends State<Home> {
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
                   onTap: () {
-                    
+                    Get.to(const AddStudent());
                   },
                   child: Card(
                     elevation: 3,
@@ -140,12 +144,12 @@ class _HomeState extends State<Home> {
                               height: 20,
                             ),
                             const Icon(
-                              Icons.create_new_folder,
+                              Icons.person_add,
                               size: 40,
                               color: Colors.green,
                             ),
                             Text(
-                              "New Record",
+                              "New Student",
                               style: GoogleFonts.montserrat(
                                   fontSize: 14, fontWeight: FontWeight.w600),
                             ),
@@ -164,7 +168,7 @@ class _HomeState extends State<Home> {
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
                   onTap: () {
-                    
+                    Get.to(const Expenditurescreen());
                   },
                   child: Card(
                     elevation: 3,
@@ -183,7 +187,7 @@ class _HomeState extends State<Home> {
                               color: Colors.green,
                             ),
                             Text(
-                              "Update Record",
+                              "Expenditure",
                               style: GoogleFonts.montserrat(
                                   fontSize: 14, fontWeight: FontWeight.w600),
                             ),
@@ -207,9 +211,7 @@ class _HomeState extends State<Home> {
                   child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
-                  onTap: () {
-                   
-                  },
+                  onTap: () {},
                   child: Card(
                     elevation: 3,
                     color: Colors.white,
@@ -246,7 +248,7 @@ class _HomeState extends State<Home> {
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
                   onTap: () {
-                    
+                    Get.to(const AccountabilityScreen());
                   },
                   child: Card(
                     elevation: 3,
@@ -260,12 +262,12 @@ class _HomeState extends State<Home> {
                               height: 20,
                             ),
                             const Icon(
-                              Icons.report_outlined,
+                              Icons.report_gmailerrorred_rounded,
                               size: 40,
                               color: Colors.green,
                             ),
                             Text(
-                              "Learn",
+                              "Accountability",
                               style: GoogleFonts.montserrat(
                                   fontSize: 14, fontWeight: FontWeight.w600),
                             ),
