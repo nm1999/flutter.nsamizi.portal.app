@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../localDB/sqliteservice.dart';
+
 class Results extends StatefulWidget {
   const Results({super.key});
 
@@ -13,16 +15,14 @@ class _ResultsState extends State<Results> {
   Dio dio = Dio();
   List records = [];
 
+  DatabaseHelper db = DatabaseHelper();
+
   fetchRecords() async {
-    Response response =
-        await dio.get("http://nutricare.benipele.org/v1/fetch-record.php");
-    if (response.statusCode == 200) {
-      setState(() {
-        records = response.data["results"];
+      db.getStudents().then((res){
+        setState(() {
+          records = res;
+        });
       });
-    } else {
-      print("Something went wrong");
-    }
   }
 
   @override
@@ -64,17 +64,17 @@ class _ResultsState extends State<Results> {
                         onTap: () {},
                         title: Row(
                           children: [
-                            Text("NC0012 - ",
+                            Text(records[index]["id"].toString(),
                                 style: GoogleFonts.montserrat(
                                     fontWeight: FontWeight.w600)),
                             Text(
-                                "${records[index]["surname"]} ${records[index]["firstname"]}",
+                                "- ${records[index]["surname"]} ${records[index]["firstname"]}",
                                 style: GoogleFonts.montserrat()),
                           ],
                         ),
                         subtitle: Text(
-                          "${records[index]["village"]}",
-                          style: GoogleFonts.montserrat(),
+                          "${records[index]["course"]}",
+                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
                         ),
                         shape: const RoundedRectangleBorder(
                           side: BorderSide(
