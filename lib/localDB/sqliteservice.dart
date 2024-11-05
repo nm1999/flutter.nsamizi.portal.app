@@ -19,62 +19,62 @@ class DatabaseHelper {
   }
 
   Future<Database> initDatabase() async {
-    final String path = join(await getDatabasesPath(), 'adherence.db');
+    final String path = join(await getDatabasesPath(), 'nsamizi.db');
 
     return openDatabase(path, onCreate: (db, version) async {
       await db.execute('''
       CREATE TABLE IF NOT EXISTS users(
         id INTEGER PRIMARY KEY,
         name TEXT,
-        userId INTEGER,
+        contact INTEGER,
         role INTEGER,
         email TEXT
       )
     ''');
 
       await db.execute('''
-      CREATE TABLE IF NOT EXISTS appointment(
+      CREATE TABLE IF NOT EXISTS students(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        note TEXT,
-        date TEXT,
-        time TEXT
-      )
+        firstname TEXT,
+        surname TEXT,
+        contact TEXT,
+        course TEXT,
+        duration TEXT,
+        regno TEXT)
     ''');
       await db.execute('''
-          CREATE TABLE IF NOT EXISTS reminders(
+          CREATE TABLE IF NOT EXISTS expense(
           id INTEGER PRIMARY KEY AUTOINCREMENT,
-          note TEXT,
-          date TEXT,
-          time TEXT,
-          is_fulfilled INTEGER,
-          type_medication TEXT,
-          no_of_days INTEGER,
-          user_id INTEGER) ''');
+          student_id TEXT,
+          amount_removed TEXT,
+          reason TEXT,
+          user_id INTEGER
+        ) ''');
     }, version: 1);
   }
 
 
 
-  Future<int> insertNewUser(Map<String, dynamic> pdts) async {
+  Future<int> insertStudent(Map<String, dynamic> pdts) async {
     final db = await database;
-    return await db.insert('users', pdts);
+    return await db.insert('students', pdts);
   }
 
   Future<int> insertUser(Map<String, dynamic> pdts) async {
     final db = await database;
-    return await db.insert('reminders', pdts);
+    return await db.insert('students', pdts);
   }
 
   Future<int> insertAppointment(Map<String, dynamic> pdts) async {
     final db = await database;
-    return await db.insert('appointment', pdts);
+    return await db.insert('expense', pdts);
   }
 
-  Future<List<Map<String, dynamic>>> getReminders() async {
+  Future<List<Map<String, dynamic>>> getStudents() async {
     final db = await database;
-    final List<Map<String, dynamic>> items =
-        await db.rawQuery('select * from reminders order by id  desc');
-    return items;
+    final List<Map<String, dynamic>> stds =
+        await db.rawQuery('select * from students order by id  desc');
+    return stds;
   }
   
   Future<List<Map<String, dynamic>>> getUser() async {
@@ -84,54 +84,41 @@ class DatabaseHelper {
     return items;
   }
   
-  Future<List<Map<String, dynamic>>> fetchReminderDetail(int id) async {
+  Future<List<Map<String, dynamic>>> fetchExpenses(int id) async {
     final db = await database;
     final List<Map<String, dynamic>> items =
-        await db.rawQuery('select * from reminders where id = $id limit 1');
+        await db.rawQuery('select * from expense where id = $id limit 1');
     return items;
   }
 
-  Future<List<Map<String, dynamic>>> getAppointments() async {
+  Future<List<Map<String, dynamic>>> getAllExpenses() async {
     final db = await database;
     final List<Map<String, dynamic>> items =
-        await db.rawQuery(' select * from appointment  order by id desc');
-    print(items);
+        await db.rawQuery(' select * from expense  order by id desc');
     return items;
-  }
-
-  Future<List<Map<String, dynamic>>> fetchConfirmedPlacedOrder() async {
-    final db = await database;
-    final List<Map<String, dynamic>> orders = await db.rawQuery(
-        "select * from reminders where is_confirmed = 0 order by id desc");
-    return orders;
-  }
-
-  Future updateConfirmedCart() async {
-    final db = await database;
-    await db.rawQuery("update cart set is_confirmed=1 where is_confirmed=0");
   }
   
-  Future updateReminder(int id,int status) async {
-    final db = await database;
-    await db.rawQuery("update reminders set is_fulfilled=$status where id =$id");
-  }
+  // Future updateReminder(int id,int status) async {
+  //   final db = await database;
+  //   await db.rawQuery("update reminders set is_fulfilled=$status where id =$id");
+  // }
 
-  Future<int> updateUser(Map<String, dynamic> user) async {
-    final db = await database;
-    return await db.update(
-      'users',
-      user,
-      where: 'id = ?',
-      whereArgs: [user['id']],
-    );
-  }
+  // Future<int> updateUser(Map<String, dynamic> user) async {
+  //   final db = await database;
+  //   return await db.update(
+  //     'users',
+  //     user,
+  //     where: 'id = ?',
+  //     whereArgs: [user['id']],
+  //   );
+  // }
 
-  Future<int> deleteCart(int id) async {
-    final db = await database;
-    return await db.delete(
-      'cart',
-      where: 'id = ?',
-      whereArgs: [id],
-    );
-  }
+  // Future<int> deleteCart(int id) async {
+  //   final db = await database;
+  //   return await db.delete(
+  //     'cart',
+  //     where: 'id = ?',
+  //     whereArgs: [id],
+  //   );
+  // }
 }

@@ -51,7 +51,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
+                    padding: const EdgeInsets.only(left: 14.0),
                     child: Text(
                       "Good Morning",
                       style: GoogleFonts.montserrat(fontSize: 18),

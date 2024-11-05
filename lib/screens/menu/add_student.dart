@@ -1,8 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nsamiziportal/common/FormButton.dart';
 import 'package:nsamiziportal/common/FormEditText.dart';
 import 'package:nsamiziportal/localDB/apiServices.dart';
+
+import '../../localDB/sqliteservice.dart';
 
 class AddStudent extends StatefulWidget {
   const AddStudent({super.key});
@@ -12,6 +15,8 @@ class AddStudent extends StatefulWidget {
 }
 
 class _AddStudentState extends State<AddStudent> {
+  DatabaseHelper db = DatabaseHelper();
+
   final TextEditingController firstnameController = TextEditingController();
   final TextEditingController surnameController = TextEditingController();
   final TextEditingController contactController = TextEditingController();
@@ -35,8 +40,23 @@ class _AddStudentState extends State<AddStudent> {
     "Year 2 Sem 2",
   ];
 
-  _registerStudent() {
-    
+  _registerStudent() async {
+    //collect all inputs values should not be null
+
+    String firstname = firstnameController.text;
+    String surname = surnameController.text;
+    String contact = contactController.text;
+
+    Map<String, dynamic> pdts ={
+      'firstname':firstname,
+      'surname':surname,
+      'contact':contact,
+      'course':_selectedCourse,
+      'duration':_selectedPeriod,
+      'regno':''
+    };
+
+    db.insertStudent(pdts);
   }
 
   @override
@@ -137,7 +157,7 @@ class _AddStudentState extends State<AddStudent> {
               height: 20,
             ),
             SizedBox(
-              height:50,
+              height: 50,
               child: FormButton(
                   btnLabel: "submit",
                   onBtnPressed: _registerStudent,
