@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nsamiziportal/common/FormButton.dart';
-
+import 'package:nsamiziportal/screens/home_screen.dart';
+import '../../localDB/sqliteservice.dart';
 import '../../common/FormEditText.dart';
 
 class Expenditurescreen extends StatefulWidget {
@@ -15,18 +17,53 @@ class _ExpenditurescreenState extends State<Expenditurescreen> {
   final TextEditingController amountRemovedController = TextEditingController();
   final TextEditingController reasonController = TextEditingController();
 
-  List<String> students = [
-    "Student 1",
-    "Student 2",
-    "Student 3",
-    "Student 4",
-    "Student 5",
-    "Student 6",
-    "Student 7",
-  ];
+  List students = [];
+  List studentIds = [];
+  late String selectedStudent;
+  DatabaseHelper db = DatabaseHelper();
 
   _submitExpense() {
-    
+    String amountRemoved = amountRemovedController.text;
+    String reason = reasonController.text;
+
+    if (reason.isNotEmpty &&
+        amountRemoved.isNotEmpty &&
+        selectedStudent.isNotEmpty) {
+      int index = students.indexOf(selectedStudent);
+
+      Map<String, dynamic> exp = {
+        'student_id': studentIds[index],
+        'amount_removed': amountRemoved,
+        'reason': reason,
+        'user_id': 1
+      };
+
+      db.insertExpense(exp).then((res) {
+        if (res > 0) {
+          Get.to(const HomeScreen());
+        } else {
+          print("failed to insert data with response $res");
+        }
+      });
+    }
+  }
+
+  getStudent() {
+    db.getStudents().then((res) {
+      for (var element in res) {
+        String name = "${element['firstname']}  ${element['surname']}";
+        studentIds.add(element["id"]);
+        students.add(name);
+      }
+      //update the array
+      setState(() {});
+    });
+  }
+
+  @override
+  void initState() {
+    getStudent();
+    super.initState();
   }
 
   @override
@@ -51,15 +88,16 @@ class _ExpenditurescreenState extends State<Expenditurescreen> {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(0))),
                 ),
-                items: students.map<DropdownMenuItem<String>>((String value) {
+                items: students.map<DropdownMenuItem>((value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
                   );
                 }).toList(),
                 onChanged: (value) {
-                  print(value);
-                  setState(() {});
+                  setState(() {
+                    selectedStudent = value;
+                  });
                 },
                 hint: Text(
                   "Student",
