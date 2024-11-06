@@ -65,7 +65,7 @@ class DatabaseHelper {
     return await db.insert('students', pdts);
   }
 
-  Future<int> insertAppointment(Map<String, dynamic> pdts) async {
+  Future<int> insertExpense(Map<String, dynamic> pdts) async {
     final db = await database;
     return await db.insert('expense', pdts);
   }
