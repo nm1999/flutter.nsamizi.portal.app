@@ -15,7 +15,6 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  
 
   _proceedToDashboard() {
     Get.to(const HomeScreen());
@@ -52,7 +51,6 @@ class _SignInScreenState extends State<SignInScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                
                 const SizedBox(
                   height: 10,
                 ),
@@ -68,7 +66,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 FormEditText(
                     isHidden: true,
                     inputLabel: "Password",
-                    textInputType: TextInputType.visiblePassword,                    
+                    textInputType: TextInputType.visiblePassword,
                     controller: passwordController),
                 const SizedBox(
                   height: 20,
@@ -92,9 +90,11 @@ class _SignInScreenState extends State<SignInScreen> {
                     width: _width,
                     height: 50,
                     child: FormButton(
-                        btnLabel: "Login",
-                        onBtnPressed:_proceedToDashboard,
-                        isOutlined: false)),
+                      btnLabel: "Login",
+                      onBtnPressed: _proceedToDashboard,
+                      isOutlined: false,
+                      hasBorderRadius: false,
+                    )),
                 const SizedBox(
                   height: 10,
                 ),
@@ -102,9 +102,11 @@ class _SignInScreenState extends State<SignInScreen> {
                     width: _width,
                     height: 40,
                     child: FormButton(
-                        btnLabel: "New user ? Register",
-                        onBtnPressed: _proceedToSelfRegister,
-                        isOutlined: true))
+                      btnLabel: "New user ? Register",
+                      onBtnPressed: _proceedToSelfRegister,
+                      isOutlined: true,
+                      hasBorderRadius: false,
+                    ))
               ],
             ),
           ),

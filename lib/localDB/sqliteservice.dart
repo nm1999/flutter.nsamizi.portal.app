@@ -50,6 +50,14 @@ class DatabaseHelper {
           reason TEXT,
           user_id INTEGER
         ) ''');
+      await db.execute('''
+          CREATE TABLE IF NOT EXISTS student_payment_record(
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          student_id TEXT,
+          amount_paid INTEGER,
+          fee TEXT,
+          user_id INTEGER
+        ) ''');
     }, version: 1);
   }
 
@@ -63,6 +71,11 @@ class DatabaseHelper {
   Future<int> insertUser(Map<String, dynamic> pdts) async {
     final db = await database;
     return await db.insert('students', pdts);
+  }
+  
+  Future<int> insertFee(Map<String, dynamic> pdts) async {
+    final db = await database;
+    return await db.insert('student_payment_record', pdts);
   }
 
   Future<int> insertExpense(Map<String, dynamic> pdts) async {
@@ -95,6 +108,13 @@ class DatabaseHelper {
     final db = await database;
     final List<Map<String, dynamic>> items =
         await db.rawQuery(' select * from expense  order by id desc');
+    return items;
+  }
+  
+  Future<List<Map<String, dynamic>>> getStudentPaymentRecord(id) async {
+    final db = await database;
+    final List<Map<String, dynamic>> items =
+        await db.rawQuery(' select * from student_payment_record where student_id = $id  order by id desc');
     return items;
   }
   

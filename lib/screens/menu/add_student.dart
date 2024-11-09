@@ -161,7 +161,7 @@ class _AddStudentState extends State<AddStudent> {
               child: FormButton(
                   btnLabel: "submit",
                   onBtnPressed: _registerStudent,
-                  isOutlined: false),
+                  isOutlined: false, hasBorderRadius: false,),
             )
           ],
         ),

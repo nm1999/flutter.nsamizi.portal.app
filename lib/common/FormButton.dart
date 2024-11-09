@@ -4,11 +4,13 @@ class FormButton extends StatelessWidget {
   final String btnLabel;
   final Function() onBtnPressed;
   final bool isOutlined;
+  final bool hasBorderRadius;
   const FormButton(
       {super.key,
       required this.btnLabel,
       required this.onBtnPressed,
-      required this.isOutlined});
+      required this.isOutlined,
+      required this.hasBorderRadius});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class FormButton extends StatelessWidget {
         onPressed: onBtnPressed,
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(0.0)), // Add rounded corners
+              borderRadius: BorderRadius.circular(hasBorderRadius ? 20 : 0)), // Add rounded corners
         ),
         child: Text(
           btnLabel,
@@ -28,7 +30,10 @@ class FormButton extends StatelessWidget {
       return MaterialButton(
         onPressed: onBtnPressed,
         color: Colors.green,
-        elevation: 3,       
+        elevation: 3,
+        shape: RoundedRectangleBorder(
+            borderRadius:
+                BorderRadius.all(Radius.circular(hasBorderRadius ? 20 : 0))),
         child: Text(btnLabel,
             style: const TextStyle(color: Colors.white, fontSize: 16)),
       );
