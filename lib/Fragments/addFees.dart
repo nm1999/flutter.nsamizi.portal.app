@@ -21,11 +21,23 @@ class AddFees extends StatefulWidget {
 
 class _AddFeesState extends State<AddFees> {
   bool isPaymentTabOpened = false;
+  DatabaseHelper db = DatabaseHelper();
 
   reloadPage() {
     setState(() {
       isPaymentTabOpened = false;
     });
+  }
+
+  _getTuition() {
+    db.getTotalTuition(widget.studentId).then((record) {
+      print(record);
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
@@ -81,9 +93,10 @@ class _AddFeesState extends State<AddFees> {
                     FormButton(
                       btnLabel: "View Record",
                       onBtnPressed: () {
-                        setState(() {
-                          isPaymentTabOpened = false;
-                        });
+                        _getTuition();
+                        // setState(() {
+                        //   isPaymentTabOpened = false;
+                        // });
                       },
                       isOutlined: isPaymentTabOpened,
                       hasBorderRadius: true,
