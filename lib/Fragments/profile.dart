@@ -81,11 +81,13 @@ class _ProfileState extends State<Profile> {
               height: 80,
             ),
             Container(
-              margin:const EdgeInsets.only(left:10,right: 10),
+              margin: const EdgeInsets.only(left: 10, right: 10),
               child: FormButton(
-                  btnLabel: "logout",
-                  onBtnPressed: _onLogoutPressed,
-                  isOutlined: true),
+                btnLabel: "logout",
+                onBtnPressed: _onLogoutPressed,
+                isOutlined: true,
+                hasBorderRadius: false,
+              ),
             ),
           ],
         ));

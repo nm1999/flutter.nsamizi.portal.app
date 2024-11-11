@@ -50,10 +50,16 @@ class DatabaseHelper {
           reason TEXT,
           user_id INTEGER
         ) ''');
+      await db.execute('''
+          CREATE TABLE IF NOT EXISTS student_payment_record(
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          student_id TEXT,
+          amount_paid INTEGER,
+          fee TEXT,
+          user_id INTEGER
+        ) ''');
     }, version: 1);
   }
-
-
 
   Future<int> insertStudent(Map<String, dynamic> pdts) async {
     final db = await database;
@@ -63,6 +69,11 @@ class DatabaseHelper {
   Future<int> insertUser(Map<String, dynamic> pdts) async {
     final db = await database;
     return await db.insert('students', pdts);
+  }
+
+  Future<int> insertFee(Map<String, dynamic> pdts) async {
+    final db = await database;
+    return await db.insert('student_payment_record', pdts);
   }
 
   Future<int> insertExpense(Map<String, dynamic> pdts) async {
@@ -76,14 +87,14 @@ class DatabaseHelper {
         await db.rawQuery('select * from students order by id  desc');
     return stds;
   }
-  
+
   Future<List<Map<String, dynamic>>> getUser() async {
     final db = await database;
     final List<Map<String, dynamic>> items =
         await db.rawQuery('select * from users order by id  desc limit 1');
     return items;
   }
-  
+
   Future<List<Map<String, dynamic>>> fetchExpenses(int id) async {
     final db = await database;
     final List<Map<String, dynamic>> items =
@@ -97,7 +108,24 @@ class DatabaseHelper {
         await db.rawQuery(' select * from expense  order by id desc');
     return items;
   }
-  
+
+  Future<List<Map<String, dynamic>>> getStudentPaymentRecord(id) async {
+    final db = await database;
+    final List<Map<String, dynamic>> items = await db.rawQuery(
+        ' select * from student_payment_record where student_id = $id  order by id desc');
+    return items;
+  }
+
+  Future<int> getTotalTuition(id) async {
+    String param = "Tuition";
+    final db = await database;
+    final List<Map<String, dynamic>> items = await db.rawQuery(
+        'select amount_paid from student_payment_record where student_id = $id and fee = $param');
+    print(items);
+
+    return 1;
+  }
+
   // Future updateReminder(int id,int status) async {
   //   final db = await database;
   //   await db.rawQuery("update reminders set is_fulfilled=$status where id =$id");

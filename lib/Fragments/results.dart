@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nsamiziportal/Fragments/addFees.dart';
 
 import '../localDB/sqliteservice.dart';
 
@@ -18,11 +20,11 @@ class _ResultsState extends State<Results> {
   DatabaseHelper db = DatabaseHelper();
 
   fetchRecords() async {
-      db.getStudents().then((res){
-        setState(() {
-          records = res;
-        });
+    db.getStudents().then((res) {
+      setState(() {
+        records = res;
       });
+    });
   }
 
   @override
@@ -35,10 +37,11 @@ class _ResultsState extends State<Results> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [          
+        children: [
           Container(
             height: 50,
-            margin: const EdgeInsets.only(left: 10, right: 10, bottom: 10,top: 10),
+            margin:
+                const EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
             decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(30)),
                 color: Colors.grey[200]),
@@ -61,7 +64,14 @@ class _ResultsState extends State<Results> {
                 : ListView.builder(
                     itemBuilder: (context, index) {
                       return ListTile(
-                        onTap: () {},
+                        onTap: () {
+                          Get.to(AddFees(
+                            name:
+                                "${records[index]["surname"]} ${records[index]["firstname"]}",
+                            studentId: records[index]["id"],
+                            course: records[index]["course"],
+                          ));
+                        },
                         title: Row(
                           children: [
                             Text(records[index]["id"].toString(),
@@ -74,7 +84,8 @@ class _ResultsState extends State<Results> {
                         ),
                         subtitle: Text(
                           "${records[index]["course"]}",
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+                          style: GoogleFonts.montserrat(
+                              fontWeight: FontWeight.bold),
                         ),
                         shape: const RoundedRectangleBorder(
                           side: BorderSide(

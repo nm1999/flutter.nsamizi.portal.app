@@ -127,7 +127,7 @@ class _ExpenditurescreenState extends State<Expenditurescreen> {
                 child: FormButton(
                     btnLabel: "submit",
                     onBtnPressed: _submitExpense,
-                    isOutlined: false))
+                    isOutlined: false, hasBorderRadius: false,))
           ],
         ),
       ),
