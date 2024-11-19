@@ -143,11 +143,11 @@ class _ViewRecordState extends State<ViewRecord> {
   DatabaseHelper db = DatabaseHelper();
   List record = [];
   getStudentRecord() {
-    db.getStudentPaymentRecord(widget.student_id).then((val) {
-      setState(() {
-        record = val;
-      });
-    });
+    // db.getStudentPaymentRecord(widget.student_id).then((val) {
+    //   setState(() {
+    //     record = val;
+    //   });
+    // });
   }
 
   @override

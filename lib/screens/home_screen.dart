@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     size: 25,
                     color: index == 1 ? Colors.green : null,
                   ),
-                  Text("Results",
+                  Text("Search",
                       style: GoogleFonts.montserrat(
                           fontSize: 12, color: index == 1 ? Colors.green : null)),
                 ],
