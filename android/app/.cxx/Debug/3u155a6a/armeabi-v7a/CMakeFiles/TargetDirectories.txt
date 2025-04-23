@@ -1,2 +1,0 @@
-G:/apps/nsamiziportal/android/app/.cxx/Debug/3u155a6a/armeabi-v7a/CMakeFiles/edit_cache.dir
-G:/apps/nsamiziportal/android/app/.cxx/Debug/3u155a6a/armeabi-v7a/CMakeFiles/rebuild_cache.dir
