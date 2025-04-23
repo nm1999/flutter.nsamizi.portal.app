@@ -35,13 +35,13 @@ Future<void> _showNotification(channelId, title, description) async {
   NotificationDetails platformChannelSpecifics =
       NotificationDetails(android: androidPlatformChannelSpecifics);
 
-  await flutterLocalNotificationsPlugin.show(
-    channelId,
-    title,
-    description,
-    platformChannelSpecifics,
-    payload: 'item x',
-  );
+  // await flutterLocalNotificationsPlugin.show(
+  //   channelId,
+  //   title,
+  //   description,
+  //   platformChannelSpecifics,
+  //   payload: 'item x',
+  // );
 }
 
 class FirebaseApi {
