@@ -1,0 +1,2 @@
+G:/apps/nsamiziportal/android/app/.cxx/Debug/3u155a6a/x86/CMakeFiles/edit_cache.dir
+G:/apps/nsamiziportal/android/app/.cxx/Debug/3u155a6a/x86/CMakeFiles/rebuild_cache.dir
