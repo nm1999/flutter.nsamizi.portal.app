@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nsamiziportal/common/colors.dart';
 
 class FormButton extends StatelessWidget {
   final String btnLabel;
@@ -19,21 +20,21 @@ class FormButton extends StatelessWidget {
         onPressed: onBtnPressed,
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(hasBorderRadius ? 20 : 0)), // Add rounded corners
+              borderRadius: BorderRadius.circular(hasBorderRadius ? 20 : 10)), // Add rounded corners
         ),
         child: Text(
           btnLabel,
-          style: const TextStyle(color: Colors.green, fontSize: 16),
+          style: const TextStyle(color: AppColor.mainColor, fontSize: 16),
         ),
       );
     } else {
       return MaterialButton(
         onPressed: onBtnPressed,
-        color: Colors.green,
+        color: AppColor.mainColor,
         elevation: 3,
         shape: RoundedRectangleBorder(
             borderRadius:
-                BorderRadius.all(Radius.circular(hasBorderRadius ? 20 : 0))),
+                BorderRadius.all(Radius.circular(hasBorderRadius ? 20 : 10))),
         child: Text(btnLabel,
             style: const TextStyle(color: Colors.white, fontSize: 16)),
       );
