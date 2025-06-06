@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../common/colors.dart';
 import '../screens/menu/accountability.dart';
 import '../screens/menu/add_student.dart';
 import '../screens/menu/expenditure_screen.dart';
@@ -17,6 +18,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.backgroundColorlight,
       body: ListView(
         scrollDirection: Axis.vertical,
         children: [
@@ -41,41 +43,20 @@ class _HomeState extends State<Home> {
                               color: Colors.black),
                         ),
                         Text(
-                          " there !",
+                          " Benard !",
                           style: GoogleFonts.montserrat(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,
-                              color: Colors.green),
+                              color: AppColor.mainColor),
                         ),
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 14.0),
-                    child: Text(
-                      "Good Morning",
-                      style: GoogleFonts.montserrat(fontSize: 18),
-                    ),
-                  ),
+                 
                 ],
               ),
             ],
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Container(
-            margin: const EdgeInsets.only(left: 10, right: 10),
-            decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(30)),
-                color: Colors.grey[200]),
-            child: const TextField(
-              decoration: InputDecoration(
-                  border: InputBorder.none,
-                  prefixIcon: Icon(Icons.search),
-                  hintText: "search"),
-            ),
-          ),
+          ),            
           const SizedBox(
             height: 20,
           ),
@@ -144,12 +125,12 @@ class _HomeState extends State<Home> {
                               height: 20,
                             ),
                             const Icon(
-                              Icons.person_add,
+                              Icons.fireplace,
                               size: 40,
-                              color: Colors.green,
+                              color: AppColor.mainColor,
                             ),
                             Text(
-                              "New Student",
+                              "Past papers",
                               style: GoogleFonts.montserrat(
                                   fontSize: 14, fontWeight: FontWeight.w600),
                             ),
@@ -184,10 +165,10 @@ class _HomeState extends State<Home> {
                             const Icon(
                               Icons.edit_document,
                               size: 40,
-                              color: Colors.green,
+                              color: AppColor.mainColor,
                             ),
                             Text(
-                              "Expenditure",
+                              "Results",
                               style: GoogleFonts.montserrat(
                                   fontSize: 14, fontWeight: FontWeight.w600),
                             ),
@@ -224,12 +205,12 @@ class _HomeState extends State<Home> {
                               height: 20,
                             ),
                             const Icon(
-                              Icons.remove_red_eye_outlined,
+                              Icons.money,
                               size: 40,
-                              color: Colors.green,
+                              color: AppColor.mainColor,
                             ),
                             Text(
-                              "View Record",
+                              "Payments",
                               style: GoogleFonts.montserrat(
                                   fontSize: 14, fontWeight: FontWeight.w600),
                             ),
@@ -264,10 +245,10 @@ class _HomeState extends State<Home> {
                             const Icon(
                               Icons.report_gmailerrorred_rounded,
                               size: 40,
-                              color: Colors.green,
+                              color: AppColor.mainColor,
                             ),
                             Text(
-                              "Accountability",
+                              "Inquiries",
                               style: GoogleFonts.montserrat(
                                   fontSize: 14, fontWeight: FontWeight.w600),
                             ),

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nsamiziportal/common/FormButton.dart';
 import 'package:nsamiziportal/screens/home_screen.dart';
 import '../common/FormEditText.dart';
+import '../common/colors.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -46,7 +47,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   style: GoogleFonts.adamina(
                       fontWeight: FontWeight.bold,
                       fontSize: 25,
-                      color: Colors.green),
+                      color: AppColor.mainColor),
                 ),
                 const SizedBox(
                   height: 10,
@@ -79,7 +80,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       style: GoogleFonts.aBeeZee(
                           fontStyle: FontStyle.italic,
                           fontSize: 14,
-                          color: Colors.green),
+                          color: AppColor.mainColor),
                     ),
                   ],
                 ),
