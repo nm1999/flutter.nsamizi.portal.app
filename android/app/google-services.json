@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "445571675683",
+    "project_id": "nsamiziportal",
+    "storage_bucket": "nsamiziportal.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445571675683:android:2d8828b9e950f45b59e396",
+        "android_client_info": {
+          "package_name": "com.example.nsamiziportal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaZWLgp2nMpYEH3e4M-jmr-RQORNG9CW4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

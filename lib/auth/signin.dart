@@ -5,6 +5,7 @@ import 'package:nsamiziportal/common/FormButton.dart';
 import 'package:nsamiziportal/screens/home_screen.dart';
 import '../common/FormEditText.dart';
 import '../common/colors.dart';
+import 'firebaseAuth.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -16,8 +17,11 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  Firebaseauth fb = Firebaseauth();
 
-  _proceedToDashboard() {
+  _proceedToDashboard() async {
+    String? fcm = await fb.getFCMToken();
+    print(fcm);
     Get.to(const HomeScreen());
   }
 

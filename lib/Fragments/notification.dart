@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../common/colors.dart';
+
 class NotificationFragment extends StatefulWidget {
   const NotificationFragment({super.key});
 
@@ -13,11 +15,12 @@ class _NotificationFragmentState extends State<NotificationFragment> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: AppColor.mainColor,
         title: Text(
           "Notifications",
           style: GoogleFonts.montserrat(color: Colors.white),
         ),
+        automaticallyImplyLeading: false,
       ),
       body: ListView.builder(
         itemBuilder: (context, index) {
