@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nsamiziportal/screens/menu/Payments.dart';
 
 import '../common/colors.dart';
+import '../screens/menu/BpamResult.dart';
 import '../screens/menu/accountability.dart';
-import '../screens/menu/add_student.dart';
-import '../screens/menu/expenditure_screen.dart';
+// import '../screens/menu/add_student.dart';
+// import '../screens/menu/expenditure_screen.dart';
+import '../screens/menu/past_papers.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -111,7 +114,7 @@ class _HomeState extends State<Home> {
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(const AddStudent());
+                    Get.to(const PastPapers());
                   },
                   child: Card(
                     elevation: 3,
@@ -149,7 +152,7 @@ class _HomeState extends State<Home> {
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(const Expenditurescreen());
+                    Get.to(const BpamResult());
                   },
                   child: Card(
                     elevation: 3,
@@ -192,7 +195,9 @@ class _HomeState extends State<Home> {
                   child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(const Payments());
+                  },
                   child: Card(
                     elevation: 3,
                     color: Colors.white,
