@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nsamiziportal/auth/LoginWithOtp.dart';
 import 'package:nsamiziportal/common/FormButton.dart';
 import 'package:nsamiziportal/screens/home_screen.dart';
 import '../common/FormEditText.dart';
@@ -25,7 +26,9 @@ class _SignInScreenState extends State<SignInScreen> {
     Get.to(const HomeScreen());
   }
 
-  _proceedToSelfRegister() {}
+  _proceedToSelfRegister() {
+    Get.to(LoginWithOTP());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +114,19 @@ class _SignInScreenState extends State<SignInScreen> {
                       onBtnPressed: _proceedToSelfRegister,
                       isOutlined: true,
                       hasBorderRadius: false,
-                    ))
+                    )),
+                const SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                    width: _width,
+                    height: 40,
+                    child: FormButton(
+                      btnLabel: "Login with Phone number",
+                      onBtnPressed: _proceedToSelfRegister,
+                      isOutlined: true,
+                      hasBorderRadius: false,
+                    )),
               ],
             ),
           ),
