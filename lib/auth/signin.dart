@@ -27,7 +27,7 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   _proceedToSelfRegister() {
-    Get.to(LoginWithOTP());
+    Get.to(const LoginWithOTP());
   }
 
   @override
@@ -35,6 +35,7 @@ class _SignInScreenState extends State<SignInScreen> {
     double _width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      appBar: AppBar(backgroundColor: AppColor.mainColor,toolbarHeight: 3,),
       body: ListView(scrollDirection: Axis.vertical, children: [
         const SizedBox(
           height: 40,
@@ -59,7 +60,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 Text(
                   "Signin into your account",
                   style: GoogleFonts.montserrat(
-                      fontWeight: FontWeight.w200,
+                      fontWeight: FontWeight.w300,
                       fontSize: 14,
                       color: Colors.black),
                 ),

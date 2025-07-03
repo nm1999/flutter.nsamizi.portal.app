@@ -82,11 +82,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 10,
                   ),
                   Icon(
-                    Icons.search,
+                    Icons.travel_explore_sharp,
                     size: 25,
                     color: index == 1 ? AppColor.mainColor : null,
                   ),
-                  Text("Search",
+                  Text("News",
                       style: GoogleFonts.montserrat(
                           fontSize: 12, color: index == 1 ? AppColor.mainColor : null)),
                 ],
