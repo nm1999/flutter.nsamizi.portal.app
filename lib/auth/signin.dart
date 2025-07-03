@@ -47,20 +47,24 @@ class _SignInScreenState extends State<SignInScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Text(
-                  "Login",
-                  style: GoogleFonts.adamina(
+                  "Easy to Learn,discover more skills",
+                  style: GoogleFonts.montserrat(
                       fontWeight: FontWeight.bold,
                       fontSize: 25,
-                      color: AppColor.mainColor),
+                      color: Colors.black),
+                ),
+                Text(
+                  "Signin into your account",
+                  style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w200,
+                      fontSize: 14,
+                      color: Colors.black),
                 ),
                 const SizedBox(
-                  height: 10,
-                ),
-                const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 FormEditText(
                   inputLabel: "Username",
@@ -77,7 +81,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     textInputType: TextInputType.visiblePassword,
                     controller: passwordController),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -89,10 +93,11 @@ class _SignInScreenState extends State<SignInScreen> {
                           fontSize: 14,
                           color: AppColor.mainColor),
                     ),
+                    const SizedBox(width:10,),
                   ],
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 50,
                 ),
                 SizedBox(
                     width: _width,
@@ -108,25 +113,13 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
                 SizedBox(
                     width: _width,
-                    height: 40,
+                    height: 45,
                     child: FormButton(
                       btnLabel: "New user ? Register",
                       onBtnPressed: _proceedToSelfRegister,
                       isOutlined: true,
                       hasBorderRadius: false,
-                    )),
-                const SizedBox(
-                  height: 10,
-                ),
-                SizedBox(
-                    width: _width,
-                    height: 40,
-                    child: FormButton(
-                      btnLabel: "Login with Phone number",
-                      onBtnPressed: _proceedToSelfRegister,
-                      isOutlined: true,
-                      hasBorderRadius: false,
-                    )),
+                    )),                
               ],
             ),
           ),

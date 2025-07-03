@@ -20,7 +20,7 @@ class FormButton extends StatelessWidget {
         onPressed: onBtnPressed,
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(hasBorderRadius ? 20 : 10)), // Add rounded corners
+              borderRadius: BorderRadius.circular(30)), // Add rounded corners
         ),
         child: Text(
           btnLabel,
@@ -34,7 +34,7 @@ class FormButton extends StatelessWidget {
         elevation: 3,
         shape: RoundedRectangleBorder(
             borderRadius:
-                BorderRadius.all(Radius.circular(hasBorderRadius ? 20 : 10))),
+                BorderRadius.all(Radius.circular(30))),
         child: Text(btnLabel,
             style: const TextStyle(color: Colors.white, fontSize: 16)),
       );
