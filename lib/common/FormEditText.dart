@@ -21,7 +21,7 @@ class FormEditText extends StatelessWidget {
       keyboardType: textInputType,
       decoration: InputDecoration(
         border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20))
+          borderRadius: BorderRadius.all(Radius.circular(30))
         ),
         labelText: inputLabel,
       ),
