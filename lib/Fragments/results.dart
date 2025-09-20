@@ -49,7 +49,7 @@ class _ResultsState extends State<Results> {
               decoration: InputDecoration(
                   border: InputBorder.none,
                   prefixIcon: Icon(Icons.search),
-                  hintText: "search"),
+                  hintText: "News"),
             ),
           ),
           Expanded(
