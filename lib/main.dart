@@ -30,7 +30,7 @@ class _SplashscreenState extends State<Splashscreen> {
   void initState() {
     super.initState();
     Timer(Duration(seconds: 4), () {
-      Get.off(Dashboard());
+      Get.off(SignUp());
     });
   }
 
