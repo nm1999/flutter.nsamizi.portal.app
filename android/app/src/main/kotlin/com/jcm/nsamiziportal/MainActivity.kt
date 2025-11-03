@@ -1,4 +1,4 @@
-package com.example.nsamiziportal
+package com.jcm.nsamiziportal
 
 import io.flutter.embedding.android.FlutterActivity
 
