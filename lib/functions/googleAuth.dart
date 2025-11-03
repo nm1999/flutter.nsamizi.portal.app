@@ -1,45 +1,44 @@
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleAuthService {
-  static const String _serverClientId = 'YOUR_WEB_SERVER_CLIENT_ID.apps.googleusercontent.com';
+  final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
+  bool _isInitialized = false;
 
-  final GoogleSignIn _googleSignIn = GoogleSignIn(
-    serverClientId: _serverClientId,
-    scopes: <String>[
-      'email',
-      // Add other required scopes if you need to access Google APIs
-    ],
-  );
+  // 1. Define all necessary scopes here
+  static const List<String> requiredScopes = <String>[
+    'email', 
+  ];
 
-  Future<String?> signInWithGoogle() async {
-    try {
-      // 1. Start the sign-in process
-      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-
-      if (googleUser == null) {
-        return null;
+  Future<void> initializeGoogleSignIn() async {
+    if (!_isInitialized) {
+      try {
+        await _googleSignIn.initialize(
+          serverClientId: '440250374541-02k400s59a3ea96vcmkio9gdircf58k7.apps.googleusercontent.com',
+        );
+        _isInitialized = true;
+        print("Google Sign-In Initialized successfully.");
+      } catch (error) {
+        print('Initialization failed: $error');
       }
-
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-
-      final String? idToken = googleAuth.idToken;
-
-      if (idToken != null) {
-        print('✅ Google ID Token successfully obtained: $idToken');
-        return idToken;
-      } else {
-        print('❌ Failed to retrieve ID Token.');
-        return null;
-      }
-    } catch (error) {
-      print('❌ Error during Google Sign-In: $error');
-      return null;
     }
   }
 
-  /// Example of how to sign the user out.
-  Future<void> signOutGoogle() async {
-    await _googleSignIn.signOut();
-    print('User signed out from Google.');
+  Future<GoogleSignInAccount?> signInWithGoogle() async {
+    await initializeGoogleSignIn(); 
+
+    try {
+      final GoogleSignInAccount? account = await _googleSignIn.authenticate(
+          scopeHint: requiredScopes,
+      );  
+      print("message");
+      if (account != null) {
+        print("Sign-in successful for user: ${account.email}"); // Use a String property for logging
+      }   
+      return account;
+    } catch (error) {
+      print('Google Sign-In Error: $error');
+      return null;
+    }
   }
 }
