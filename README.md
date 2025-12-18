@@ -1,4 +1,4 @@
-# nsamiziportal
+# nsamizi_portal
 
 A new Flutter project.
 
