@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   timingScreen() {
     Future.delayed(const Duration(seconds: 3), () {
-      
+      Get.off(ResultsView());
     });
   }
 
