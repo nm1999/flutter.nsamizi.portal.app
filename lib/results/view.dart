@@ -35,7 +35,7 @@ class _ResultsViewState extends State<ResultsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("View results"),
       ),
       body: ListView(
         children: [
