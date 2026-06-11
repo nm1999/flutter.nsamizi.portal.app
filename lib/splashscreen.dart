@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import './Scan/DocumentScanScreen.dart';
+import 'dashboard.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   timingScreen() {
     Future.delayed(const Duration(seconds: 3), () {
-      Get.off(const ScanDocument());
+      Get.off(const Dashboard());
     });
   }
 
