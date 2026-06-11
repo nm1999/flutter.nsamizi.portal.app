@@ -8,6 +8,8 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  int currentYear = DateTime.now().year;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +39,7 @@ class _DashboardState extends State<Dashboard> {
           ),
           SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.only(left:15,right:15),
+            padding: const EdgeInsets.only(left: 15, right: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -80,7 +82,7 @@ class _DashboardState extends State<Dashboard> {
           ),
           SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.only(left:15,right:15),
+            padding: const EdgeInsets.only(left: 15, right: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -123,7 +125,7 @@ class _DashboardState extends State<Dashboard> {
           ),
           SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.only(left:15,right:15),
+            padding: const EdgeInsets.only(left: 15, right: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -161,6 +163,22 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ),
                 ),
+              ],
+            ),
+          ),
+          SizedBox(height: 20),
+          Center(
+            child: Column(
+              children: [
+                Text(
+                  "Copyright © $currentYear NTISD.",
+                  style: TextStyle(fontSize: 14),
+                ),
+                Text(
+                  "All rights reserved.",
+                  style: TextStyle(fontSize: 14),
+                ),
+                SizedBox(height: 10),
               ],
             ),
           ),
