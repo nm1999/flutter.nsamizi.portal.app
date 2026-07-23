@@ -25,33 +25,43 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/bg.png'),
-            fit: BoxFit.cover,
+          gradient: LinearGradient(
+            colors: [Color(0xFF5B64FF), Color(0xFF7E9CFF)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
         ),
-        child: const Center(
-          child: SizedBox(
-            width: 100,
-            height: 100,
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 70,
-                  width: 70,
-                  child: Image(image: AssetImage("assets/images/logo.png")),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                height: 100,
+                width: 100,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.18),
+                      blurRadius: 18,
+                      offset: Offset(0, 10),
+                    ),
+                  ],
                 ),
-                SizedBox(height: 10),
-                SizedBox(
-                  height: 20,
-                  width: 20,
-                  child: CircularProgressIndicator(),
+                child: const Icon(
+                  Icons.document_scanner,
+                  size: 50,
+                  color: Color(0xFF5B64FF),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(height: 18),
+              const CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+              ),
+            ],
           ),
         ),
       ),
