@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dashboard.dart';
+import './results/view.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   timingScreen() {
     Future.delayed(const Duration(seconds: 3), () {
-      Get.off(const Dashboard());
+      Get.off(const ResultsView());
     });
   }
 
