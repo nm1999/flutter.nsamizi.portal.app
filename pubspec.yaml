@@ -42,7 +42,7 @@ dependencies:
   dio: ^5.7.0
   google_fonts: ^6.2.1
   get: ^4.7.3
-  flutter_doc_scanner: ^0.0.17
+  flutter_doc_scanner: ^0.0.21
 
 dev_dependencies:
   flutter_test:
