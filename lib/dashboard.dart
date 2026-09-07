@@ -24,10 +24,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF4F7FF),
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: _pages,
-      ),
+      body: IndexedStack(index: _selectedIndex, children: _pages),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -84,15 +81,45 @@ class DashboardHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final stats = [
-      _MetricTile(label: 'Uploaded', value: '128', icon: Icons.upload_file_rounded, color: const Color(0xFF1E3A8A)),
-      _MetricTile(label: 'Saved', value: '94', icon: Icons.bookmark_rounded, color: const Color(0xFF22C55E)),
-      _MetricTile(label: 'Pending', value: '12', icon: Icons.schedule_rounded, color: const Color(0xFFF59E0B)),
+      _MetricTile(
+        label: 'Uploaded',
+        value: '128',
+        icon: Icons.upload_file_rounded,
+        color: const Color(0xFF1E3A8A),
+      ),
+      _MetricTile(
+        label: 'Saved',
+        value: '94',
+        icon: Icons.bookmark_rounded,
+        color: const Color(0xFF22C55E),
+      ),
+      _MetricTile(
+        label: 'Pending',
+        value: '12',
+        icon: Icons.schedule_rounded,
+        color: const Color(0xFFF59E0B),
+      ),
     ];
 
     final subjectCards = [
-      _SubjectCard(title: 'Computer Science', code: 'CS 101', count: '24 papers', color: const Color(0xFF4F46E5)),
-      _SubjectCard(title: 'Mathematics', code: 'MTH 340', count: '19 papers', color: const Color(0xFF0EA5E9)),
-      _SubjectCard(title: 'Business', code: 'BUS 230', count: '14 papers', color: const Color(0xFF14B8A6)),
+      _SubjectCard(
+        title: 'Computer Science',
+        code: 'CS 101',
+        count: '24 papers',
+        color: const Color(0xFF4F46E5),
+      ),
+      _SubjectCard(
+        title: 'Mathematics',
+        code: 'MTH 340',
+        count: '19 papers',
+        color: const Color(0xFF0EA5E9),
+      ),
+      _SubjectCard(
+        title: 'Business',
+        code: 'BUS 230',
+        count: '14 papers',
+        color: const Color(0xFF14B8A6),
+      ),
     ];
 
     return SafeArea(
@@ -101,11 +128,7 @@ class DashboardHome extends StatelessWidget {
         children: [
           _buildHeader(),
           const SizedBox(height: 24),
-          Row(
-            children: stats
-                .map((item) => Expanded(child: item))
-                .toList(),
-          ),
+          Row(children: stats.map((item) => Expanded(child: item)).toList()),
           const SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -130,8 +153,11 @@ class DashboardHome extends StatelessWidget {
                   icon: Icons.document_scanner_outlined,
                   accent: const Color(0xFF1E3A8A),
                   onTap: () {
-                    final dashboardState = context.findAncestorStateOfType<_DashboardState>();
-                    dashboardState?.setState(() => dashboardState._selectedIndex = 2);
+                    final dashboardState = context
+                        .findAncestorStateOfType<_DashboardState>();
+                    dashboardState?.setState(
+                      () => dashboardState._selectedIndex = 2,
+                    );
                   },
                 ),
               ),
@@ -143,13 +169,18 @@ class DashboardHome extends StatelessWidget {
                   icon: Icons.assessment_outlined,
                   accent: const Color(0xFF14B8A6),
                   onTap: () {
-                    final dashboardState = context.findAncestorStateOfType<_DashboardState>();
-                    dashboardState?.setState(() => dashboardState._selectedIndex = 1);
+                    final dashboardState = context
+                        .findAncestorStateOfType<_DashboardState>();
+                    dashboardState?.setState(
+                      () => dashboardState._selectedIndex = 1,
+                    );
                   },
                 ),
               ),
             ],
           ),
+          const SizedBox(height: 16),
+          _SuggestionBox(onTap: () => _showSuggestionDialog(context)),
           const SizedBox(height: 26),
           const Text(
             'Browse by course',
@@ -250,6 +281,176 @@ class DashboardHome extends StatelessWidget {
       ),
     );
   }
+
+  Future<void> _showSuggestionDialog(BuildContext context) async {
+    final suggestionController = TextEditingController();
+    String category = 'General feedback';
+
+    final submitted = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => StatefulBuilder(
+        builder: (context, setDialogState) => AlertDialog(
+          title: const Text('Share a suggestion'),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Help us improve the academic portal.',
+                  style: TextStyle(color: Color(0xFF4B5563)),
+                ),
+                const SizedBox(height: 18),
+                DropdownButtonFormField<String>(
+                  value: category,
+                  decoration: const InputDecoration(
+                    labelText: 'Category',
+                    border: OutlineInputBorder(),
+                  ),
+                  items: const [
+                    DropdownMenuItem(
+                      value: 'General feedback',
+                      child: Text('General feedback'),
+                    ),
+                    DropdownMenuItem(
+                      value: 'Past papers',
+                      child: Text('Past papers'),
+                    ),
+                    DropdownMenuItem(value: 'Results', child: Text('Results')),
+                    DropdownMenuItem(
+                      value: 'Technical issue',
+                      child: Text('Technical issue'),
+                    ),
+                  ],
+                  onChanged: (value) {
+                    if (value != null) setDialogState(() => category = value);
+                  },
+                ),
+                const SizedBox(height: 14),
+                TextField(
+                  controller: suggestionController,
+                  maxLines: 5,
+                  maxLength: 500,
+                  autofocus: true,
+                  decoration: const InputDecoration(
+                    labelText: 'Your suggestion',
+                    hintText: 'Tell us what would make the portal better',
+                    alignLabelWithHint: true,
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(dialogContext).pop(false),
+              child: const Text('Cancel'),
+            ),
+            FilledButton.icon(
+              onPressed: () {
+                if (suggestionController.text.trim().isEmpty) {
+                  ScaffoldMessenger.of(dialogContext).showSnackBar(
+                    const SnackBar(
+                      content: Text('Please enter a suggestion first.'),
+                    ),
+                  );
+                  return;
+                }
+                Navigator.of(dialogContext).pop(true);
+              },
+              icon: const Icon(Icons.send_rounded),
+              label: const Text('Submit'),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    Future<void>.delayed(
+      const Duration(milliseconds: 300),
+      suggestionController.dispose,
+    );
+    if (submitted == true && context.mounted) {
+      await showDialog<void>(
+        context: context,
+        builder: (context) => AlertDialog(
+          icon: const Icon(
+            Icons.check_circle_rounded,
+            color: Color(0xFF16A34A),
+            size: 42,
+          ),
+          title: const Text('Suggestion sent'),
+          content: const Text('Thanks. Your feedback has been noted.'),
+          actions: [
+            FilledButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('Done'),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+}
+
+class _SuggestionBox extends StatelessWidget {
+  final VoidCallback onTap;
+
+  const _SuggestionBox({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: const Color(0xFFE0F2FE),
+      borderRadius: BorderRadius.circular(20),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(20),
+        child: Padding(
+          padding: const EdgeInsets.all(18),
+          child: Row(
+            children: [
+              Container(
+                width: 46,
+                height: 46,
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.75),
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: const Icon(
+                  Icons.lightbulb_outline_rounded,
+                  color: Color(0xFF0369A1),
+                ),
+              ),
+              const SizedBox(width: 14),
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Suggestion box',
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xFF0C4A6E),
+                      ),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      'Have an idea? Share it with the team.',
+                      style: TextStyle(fontSize: 12, color: Color(0xFF075985)),
+                    ),
+                  ],
+                ),
+              ),
+              const Icon(Icons.arrow_forward_rounded, color: Color(0xFF0369A1)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class _MetricTile extends StatelessWidget {
@@ -304,10 +505,7 @@ class _MetricTile extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             label,
-            style: TextStyle(
-              fontSize: 12,
-              color: Colors.grey.shade600,
-            ),
+            style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
           ),
         ],
       ),
@@ -440,10 +638,7 @@ class _SubjectCard extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   code,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey.shade600,
-                  ),
+                  style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
                 ),
               ],
             ),
@@ -514,10 +709,7 @@ class _RecentPaperTile extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   '$course · $size · $type',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey.shade600,
-                  ),
+                  style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
                 ),
               ],
             ),
@@ -582,4 +774,3 @@ class _ProfilePage extends StatelessWidget {
     );
   }
 }
-
